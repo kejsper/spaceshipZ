@@ -1,5 +1,6 @@
 const state = [
   {
+    id: 1,
     name: 'Spaceship A',
     type: 'economy',
     company: 'Sixt',

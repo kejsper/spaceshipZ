@@ -1,0 +1,9 @@
+@import 'variables';
+@import 'icons';
+@import 'mixins';
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

@@ -19,7 +19,7 @@ export default new Router({
       component: List
     },
     {
-      path: '/spaceship',
+      path: '/spaceship/:id',
       name: 'Spaceship',
       components: Spaceship
     }
