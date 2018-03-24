@@ -1,23 +1,25 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <top/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Top from './components/common/Top.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Top
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 </style>
