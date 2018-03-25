@@ -13,7 +13,7 @@ export default {
 @import '../../../assets/scss/mixins';
 
 .search-button {
-  min-width: 200px;
+  min-width: 230px;
   padding: 15px 25px;
   border: none;
   border-radius: 5px;
