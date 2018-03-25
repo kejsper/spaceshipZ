@@ -19,6 +19,27 @@ const state = [
     ],
     description: '',
     shortDescription: ''
+  },
+  {
+    id: 2,
+    name: 'Spaceship A',
+    type: 'economy',
+    company: 'Sixt',
+    price: 500,
+    travelers: 2,
+    available: {
+      in: 'Mars',
+      start: '',
+      end: ''
+    },
+    pictures: [
+      {
+        link: 'spaceship.jpg',
+        description: 'Exterior look'
+      }
+    ],
+    description: '',
+    shortDescription: ''
   }
 ]
 

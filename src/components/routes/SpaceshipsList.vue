@@ -1,12 +1,27 @@
 <template>
-  <div class="hello">
-
-  </div>
+  <section class="hello">
+    <spaceships-items :availableSpaceships="availableSpaceships"/>
+  </section>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+import SpaceshipsItems from '../common/spaceshipList/SpaceshipsItems'
+
 export default {
-  name: 'SpaceshipsList'
+  name: 'SpaceshipsList',
+  components: {
+    SpaceshipsItems
+  },
+  computed: {
+    ...mapGetters(['availableSpaceships'])
+  },
+  methods: {
+    ...mapActions(['setAvailableSpaceships'])
+  },
+  mounted () {
+    this.setAvailableSpaceships(this.$route.query)
+  }
 }
 </script>
 
