@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import dateFormat from 'dateformat'
 import { mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
 
@@ -21,7 +22,8 @@ export default {
   methods: {
     ...mapActions(['setStartRentalDate']),
     setStartDate () {
-      this.setStartRentalDate(this.startPicked)
+      const date = dateFormat(this.startPicked, 'yyyy-mm-dd')
+      this.setStartRentalDate(date)
     }
   }
 }

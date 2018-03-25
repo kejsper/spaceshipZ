@@ -14,7 +14,7 @@ const actions = {
 const mutations = {
   [types.SET_AVAILABLE_SPACESHIPS] (state, {spaceships, query}) {
     const availableSpaceships = spaceships.filter(spaceship => {
-      return spaceship.available.in === query.pickup
+      return spaceship.available.airport === query.pickup
     })
     state.spaceships = availableSpaceships
   }

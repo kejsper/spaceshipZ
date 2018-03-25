@@ -1,47 +1,6 @@
-const state = [
-  {
-    id: 1,
-    name: 'Spaceship A',
-    type: 'economy',
-    company: 'Sixt',
-    price: 500,
-    travelers: 2,
-    available: {
-      in: 'Wrocław',
-      start: '',
-      end: ''
-    },
-    pictures: [
-      {
-        link: 'spaceship.jpg',
-        description: 'Exterior look'
-      }
-    ],
-    description: '',
-    shortDescription: ''
-  },
-  {
-    id: 2,
-    name: 'Spaceship A',
-    type: 'economy',
-    company: 'Sixt',
-    price: 500,
-    travelers: 2,
-    available: {
-      in: 'Mars',
-      start: '',
-      end: ''
-    },
-    pictures: [
-      {
-        link: 'spaceship.jpg',
-        description: 'Exterior look'
-      }
-    ],
-    description: '',
-    shortDescription: ''
-  }
-]
+import data from '../../../static/api/generated.json'
+
+const state = data
 
 const module = {
   state

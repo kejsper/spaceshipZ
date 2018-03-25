@@ -6,6 +6,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import dateFormat from 'dateformat'
 import Datepicker from 'vuejs-datepicker'
 
 export default {
@@ -21,7 +22,8 @@ export default {
   methods: {
     ...mapActions(['setEndRentalDate']),
     setEndDate () {
-      this.setEndRentalDate(this.endPicked)
+      const date = dateFormat(this.endPicked, 'yyyy-mm-dd')
+      this.setEndRentalDate(date)
     }
   }
 }
