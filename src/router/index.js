@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Main from '@/components/routes/Main'
+import List from '@/components/routes/List'
+import Spaceship from '@/components/routes/Spaceship'
 
 Vue.use(Router)
 
@@ -8,8 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Main',
+      component: Main
+    },
+    {
+      path: '/list',
+      name: 'List',
+      component: List
+    },
+    {
+      path: '/spaceship/:id',
+      name: 'Spaceship',
+      components: Spaceship
     }
   ]
 })

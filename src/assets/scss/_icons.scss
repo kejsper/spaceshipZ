@@ -1,0 +1,8 @@
+.icon {
+  &__logo {
+    &:before {
+      content: '\f135';
+      font-family: FontAwesome;
+    }
+  }
+}
