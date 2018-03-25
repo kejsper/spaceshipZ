@@ -1,16 +1,35 @@
 <template>
   <div class="filters">
+    <pick-up/>
+    <drop-off/>
+    <start-date/>
+    <end-date/>
+    <button @click="expandAdvanced != expandAdvanced">Advanced filters</button>
+    <advanced-filters v-if="expandAdvanced"/>
     <search-button @click.native="goToList"/>
   </div>
 </template>
 
 <script>
+import PickUp from './forms/PickUp'
+import DropOff from './forms/DropOff'
+import StartDate from './forms/StartDate'
+import EndDate from './forms/EndDate'
 import SearchButton from './forms/SearchButton'
 
 export default {
   name: 'Filters',
   components: {
+    PickUp,
+    DropOff,
+    StartDate,
+    EndDate,
     SearchButton
+  },
+  data () {
+    return {
+      expandAdvanced: false
+    }
   },
   methods: {
     goToList () {
