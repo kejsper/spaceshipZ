@@ -1,5 +1,5 @@
 <template>
-  <div class="filters">
+  <form class="filters">
     <pick-up/>
     <drop-off/>
     <start-date/>
@@ -7,7 +7,7 @@
     <button @click="expandAdvanced != expandAdvanced">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced"/>
     <search-button @click.native="goToList"/>
-  </div>
+  </form>
 </template>
 
 <script>
