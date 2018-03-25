@@ -6,12 +6,19 @@ const state = [
     company: 'Sixt',
     price: 500,
     travelers: 2,
+    available: {
+      in: 'Wrocław',
+      start: '',
+      end: ''
+    },
     pictures: [
       {
         link: 'spaceship.jpg',
-        alt: 'Exterior look'
+        description: 'Exterior look'
       }
-    ]
+    ],
+    description: '',
+    shortDescription: ''
   }
 ]
 
