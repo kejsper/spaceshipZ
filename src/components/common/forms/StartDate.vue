@@ -1,11 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="start-date">
     <datepicker placeholder="Pick up date" v-model="startPicked" @input="setStartDate()"></datepicker>
-    {{startPicked}}
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import Datepicker from 'vuejs-datepicker'
 
 export default {
@@ -19,8 +19,9 @@ export default {
     Datepicker
   },
   methods: {
+    ...mapActions(['setStartRentalDate']),
     setStartDate () {
-      console.log(this.startPicked)
+      this.setStartRentalDate(this.startPicked)
     }
   }
 }

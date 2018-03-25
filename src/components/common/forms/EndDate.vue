@@ -1,12 +1,29 @@
 <template>
-  <div class="hello">
-
+  <div class="end-date">
+    <datepicker placeholder="Drop off date" v-model="endPicked" @input="setEndDate()"></datepicker>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import Datepicker from 'vuejs-datepicker'
+
 export default {
-  name: 'PickUp'
+  name: 'PickUp',
+  data () {
+    return {
+      endPicked: null
+    }
+  },
+  components: {
+    Datepicker
+  },
+  methods: {
+    ...mapActions(['setEndRentalDate']),
+    setEndDate () {
+      this.setEndRentalDate(this.endPicked)
+    }
+  }
 }
 </script>
 

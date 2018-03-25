@@ -17,6 +17,8 @@ import StartDate from './forms/StartDate'
 import EndDate from './forms/EndDate'
 import SearchButton from './forms/SearchButton'
 
+import { mapState } from 'vuex'
+
 export default {
   name: 'Filters',
   components: {
@@ -30,6 +32,9 @@ export default {
     return {
       expandAdvanced: false
     }
+  },
+  computed: {
+    ...mapState(['activeFilters'])
   },
   methods: {
     goToList () {
