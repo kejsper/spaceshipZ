@@ -19,7 +19,6 @@ export default {
   methods: {
     ...mapActions(['setType']),
     setSpaceshipType () {
-      console.log(this.type)
       this.setType(this.type)
     }
   }
