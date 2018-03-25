@@ -4,9 +4,9 @@
     <drop-off/>
     <start-date/>
     <end-date/>
-    <button @click="expandAdvanced != expandAdvanced">Advanced filters</button>
+    <button @click.prevent="expandAdvanced = !expandAdvanced">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced"/>
-    <search-button @click.native="goToList"/>
+    <search-button @click.native.prevent="goToList"/>
   </form>
 </template>
 
@@ -15,6 +15,7 @@ import PickUp from './forms/PickUp'
 import DropOff from './forms/DropOff'
 import StartDate from './forms/StartDate'
 import EndDate from './forms/EndDate'
+import AdvancedFilters from './forms/AdvancedFilters'
 import SearchButton from './forms/SearchButton'
 
 import { mapState } from 'vuex'
@@ -26,6 +27,7 @@ export default {
     DropOff,
     StartDate,
     EndDate,
+    AdvancedFilters,
     SearchButton
   },
   data () {
@@ -38,7 +40,14 @@ export default {
   },
   methods: {
     goToList () {
-      console.log('kliknięte')
+      const link = {}
+      link.path = 'spaceships'
+      const query = {
+        pickup: this.activeFilters.pickup,
+        dropoff: this.activeFilters.dropoff
+      }
+      link.query = query
+      this.$router.push(link)
     }
   }
 }

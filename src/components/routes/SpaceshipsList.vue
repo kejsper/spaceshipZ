@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
-
+    chuj
   </div>
 </template>
 
 <script>
 export default {
-  name: 'List'
+  name: 'SpaceshipsList'
 }
 </script>
 

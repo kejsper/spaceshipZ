@@ -1,12 +1,12 @@
 <template>
   <div class="hello">
-
+    kupa
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Spaceship'
+  name: 'Spaceships'
 }
 </script>
 

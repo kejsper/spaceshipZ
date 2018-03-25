@@ -4,7 +4,11 @@ const state = {
   startDate: '',
   endDate: '',
   pickup: '',
-  dropoff: ''
+  dropoff: '',
+  rentalCompany: '',
+  type: '',
+  priceRange: {},
+  capacity: {}
 }
 
 const actions = {
@@ -19,6 +23,18 @@ const actions = {
   },
   setDropoff ({commit}, dropoffSelected) {
     commit(types.DROPOFF, dropoffSelected)
+  },
+  setRentalCompany ({commit}, company) {
+    commit(types.RENTAL_COMPANY, company)
+  },
+  setType ({commit}, type) {
+    commit(types.SPACESHIP_TYPE, type)
+  },
+  setPriceRange ({commit}, priceRange) {
+    commit(types.PRICE_RANGE, priceRange)
+  },
+  setCapacity ({commit}, capacity) {
+    commit(types.CAPACITY, capacity)
   }
 }
 
@@ -34,6 +50,20 @@ const mutations = {
   },
   [types.DROPOFF] (state, dropoffSelected) {
     state.dropoff = dropoffSelected
+  },
+  [types.RENTAL_COMPANY] (state, company) {
+    state.rentalCompany = company
+  },
+  [types.SPACESHIP_TYPE] (state, type) {
+    state.type = type
+  },
+  [types.PRICE_RANGE] (state, priceRange) {
+    state.priceRange.min = priceRange[0]
+    state.priceRange.max = priceRange[1]
+  },
+  [types.CAPACITY] (state, capacity) {
+    state.capacity.min = capacity[0]
+    state.capacity.max = capacity[1]
   }
 }
 
@@ -49,6 +79,12 @@ const getters = {
   },
   dropoff (state) {
     return state.dropoff
+  },
+  rentalCompany (state) {
+    return state.rentalCompany
+  },
+  SPACESHIP_TYPE (state) {
+    return state.type
   }
 }
 
