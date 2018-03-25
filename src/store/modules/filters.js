@@ -13,8 +13,13 @@ const actions = {
 
 const mutations = {
   [types.SET_AVAILABLE_SPACESHIPS] (state, {spaceships, query}) {
-    console.log(query)
-    let results = spaceships
+    let results = []
+    // simple validation - return no results if basic filters are not set
+    if (!query.pickup || !query.startDate || !query.endDate) {
+      return results
+    }
+    // filtering through possible queries
+    results = spaceships
     if (query && query.pickup) {
       const filtering = results.filter(spaceship => {
         return spaceship.available.airport === query.pickup
