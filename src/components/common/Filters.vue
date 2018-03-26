@@ -1,11 +1,11 @@
 <template>
   <form class="filters">
-    <pick-up/>
-    <drop-off/>
+    <pick-up :pickup="activeFilters.pickup"/>
+    <drop-off :dropoff="activeFilters.dropoff"/>
     <start-date/>
     <end-date/>
     <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
-    <advanced-filters v-if="expandAdvanced"/>
+    <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
     <search-button @click.native.prevent="goToList"/>
   </form>
 </template>

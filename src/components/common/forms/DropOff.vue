@@ -12,9 +12,10 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'DropOff',
+  props: ['dropoff'],
   data () {
     return {
-      dropoffSelect: null
+      dropoffSelect: this.dropoff || null
     }
   },
   methods: {

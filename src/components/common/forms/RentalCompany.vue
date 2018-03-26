@@ -13,9 +13,10 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'RentalCompany',
+  props: ['company'],
   data () {
     return {
-      rentalCompany: null
+      rentalCompany: this.company || null
     }
   },
   methods: {

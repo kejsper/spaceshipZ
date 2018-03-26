@@ -12,9 +12,10 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'PickUp',
+  props: ['pickup'],
   data () {
     return {
-      pickupSelect: null
+      pickupSelect: this.pickup || null
     }
   },
   methods: {
@@ -22,6 +23,10 @@ export default {
     setPickupSelect () {
       this.setPickup(this.pickupSelect)
     }
+  },
+  updated () {
+    console.log('tutaj')
+    this.pickupSelect = this.pickup
   }
 }
 </script>
