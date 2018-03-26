@@ -1,18 +1,23 @@
 import * as types from '../mutation-types'
 
 const state = {
-  spaceships: []
+  spaceships: [],
+  spaceship: {}
 }
 
 const actions = {
   setAvailableSpaceships ({commit, rootState}, query) {
     const spaceships = rootState.spaceships
-    commit(types.SET_AVAILABLE_SPACESHIPS, {spaceships, query})
+    commit(types.AVAILABLE_SPACESHIPS, {spaceships, query})
+  },
+  setSingleSpaceship ({commit, rootState}, id) {
+    const spaceships = rootState.spaceships
+    commit(types.SINGLE_SPACESHIP, {spaceships, id})
   }
 }
 
 const mutations = {
-  [types.SET_AVAILABLE_SPACESHIPS] (state, {spaceships, query}) {
+  [types.AVAILABLE_SPACESHIPS] (state, {spaceships, query}) {
     let results = []
     // simple validation - return no results if basic filters are not set
     if (!query.pickup || !query.startDate || !query.endDate) {
@@ -51,12 +56,19 @@ const mutations = {
       results = filtering
     }
     state.spaceships = results
+  },
+  [types.SINGLE_SPACESHIP] (state, {spaceships, id}) {
+    const filtered = spaceships.filter(spaceship => spaceship.id === id)
+    state.spaceship = filtered[0]
   }
 }
 
 const getters = {
   availableSpaceships (state) {
     return state.spaceships
+  },
+  selectedSpaceship (state) {
+    return state.spaceship
   }
 }
 

@@ -40,7 +40,7 @@ export default {
     goToSingleSpaceship (id) {
       const link = {}
       link.name = 'spaceships'
-      link.params = { id: id}
+      link.params = {id: id}
       this.$router.push(link)
     }
   }

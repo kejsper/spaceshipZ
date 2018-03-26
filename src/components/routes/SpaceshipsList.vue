@@ -1,6 +1,6 @@
 <template>
   <section class="spaceships">
-    <h2 class="spaceships__title">Search results</h2>
+    <h2 class="spaceships__title">Search results ({{availableSpaceships.length}})</h2>
     <spaceships-items :availableSpaceships="availableSpaceships"/>
   </section>
 </template>
