@@ -5,8 +5,51 @@
 @import 'icons';
 @import 'mixins';
 
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  width: 50%;
+  padding: 0.5em;
+  margin: 0.25em 0;
+  border: none;
+  border-bottom: 1px solid $color-pink;
+  color: $color-violet;
+  font-size: 0.85em;
+}
+
 #app {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  font-family: $font-normal;
+  margin-bottom: 30px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
 }

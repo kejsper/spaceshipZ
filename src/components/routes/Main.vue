@@ -21,12 +21,12 @@ export default {
 @import '../../assets/scss/mixins';
 
 .main {
-  @include flex(column, flex-start, flex-start);
+  @include flex(column, flex-start, center);
   font-size: 18px;
 
   &__title {
     font-family: $font-normal;
-    font-size: 1em;
+    font-size: 1.1em;
     color: $color-violet;
     font-weight: bold;
   }

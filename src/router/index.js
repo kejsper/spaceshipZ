@@ -1,27 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/routes/Main'
-import List from '@/components/routes/List'
-import Spaceship from '@/components/routes/Spaceship'
+import SpaceshipsList from '@/components/routes/SpaceshipsList'
+import Spaceships from '@/components/routes/Spaceships'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'Main',
+      name: 'main',
       component: Main
     },
     {
-      path: '/list',
-      name: 'List',
-      component: List
+      path: '/spaceships/:id',
+      name: 'spaceships',
+      component: Spaceships
     },
     {
-      path: '/spaceship/:id',
-      name: 'Spaceship',
-      components: Spaceship
+      path: '/spaceships/',
+      name: 'spaceshipsList',
+      component: SpaceshipsList
     }
   ]
 })
