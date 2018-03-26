@@ -18,6 +18,7 @@ export default {
   @include flex(row, flex-start, center);
   width: 100%;
   font-size: 14px;
+  padding-top: 10px;
   margin-bottom: 30px;
 
   &__logo {

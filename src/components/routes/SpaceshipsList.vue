@@ -1,5 +1,6 @@
 <template>
-  <section class="hello">
+  <section class="spaceships">
+    <h2 class="spaceships__title">Search results</h2>
     <spaceships-items :availableSpaceships="availableSpaceships"/>
   </section>
 </template>
@@ -28,5 +29,14 @@ export default {
 <style lang="scss" scoped>
 @import '../../assets/scss/variables';
 @import '../../assets/scss/mixins';
+
+.spaceships {
+  &__title {
+    font-family: $font-normal;
+    font-size: 1.1em;
+    color: $color-violet;
+    font-weight: bold;
+  }
+}
 
 </style>

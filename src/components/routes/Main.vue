@@ -26,7 +26,7 @@ export default {
 
   &__title {
     font-family: $font-normal;
-    font-size: 1em;
+    font-size: 1.1em;
     color: $color-violet;
     font-weight: bold;
   }
