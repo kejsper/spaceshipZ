@@ -1,5 +1,6 @@
 <template>
   <div class="end-date">
+    <label class="end-date__label">Drop-off date</label>
     <datepicker placeholder="Drop off date" v-model="endPicked" @input="setEndDate()"></datepicker>
   </div>
 </template>
@@ -32,5 +33,15 @@ export default {
 <style lang="scss" scoped>
 @import '../../../assets/scss/variables';
 @import '../../../assets/scss/mixins';
+.end-date {
+  width: 100%;
+  margin: 0.5em 0;
 
+  &__label {
+    width: 100%;
+    font-size: 0.85em;
+    color: $color-violet;
+    margin-top: 0.5em
+  }
+}
 </style>

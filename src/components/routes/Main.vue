@@ -21,7 +21,7 @@ export default {
 @import '../../assets/scss/mixins';
 
 .main {
-  @include flex(column, flex-start, flex-start);
+  @include flex(column, flex-start, center);
   font-size: 18px;
 
   &__title {

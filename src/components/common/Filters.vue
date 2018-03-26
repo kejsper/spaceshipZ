@@ -81,6 +81,7 @@ export default {
 .filters {
   @include flex (column, flex-start, flex-start);
   width: 100%;
+  max-width: 550px;
 
   &__button {
     align-self: center;

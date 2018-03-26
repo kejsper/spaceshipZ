@@ -1,6 +1,7 @@
 <template>
   <div class="slider">
-    <vue-slider v-model="value" :min="min" :max="max" :interval="interval" @drag-end="showValue"></vue-slider>
+    <label class="slider__label">Capacity</label>
+    <vue-slider v-model="value" v-bind="options" @drag-end="showValue"></vue-slider>
   </div>
 </template>
 
@@ -16,10 +17,20 @@ export default {
   data () {
     return {
       value: [300, 500],
-      min: 300,
-      max: 500,
-      interval: 100,
-      tooltip: 'always'
+      options: {
+        min: 300,
+        max: 500,
+        interval: 100,
+        tooltip: 'always',
+        height: 3,
+        dotSize: 12,
+        processStyle: {
+          'backgroundColor': '#E23694'
+        },
+        style: {
+          'marginTop': '32px'
+        }
+      }
     }
   },
   methods: {
@@ -38,5 +49,13 @@ export default {
   display: block;
   width: 100%;
   margin: 1.75em 0 1em 0;
+
+  &__label {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    font-size: 16px;
+    color: $color-violet;
+    margin-bottom: 0.25em
+  }
 }
 </style>
