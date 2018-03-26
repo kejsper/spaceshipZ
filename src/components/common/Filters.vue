@@ -2,8 +2,8 @@
   <form class="filters">
     <pick-up :pickup="activeFilters.pickup"/>
     <drop-off :dropoff="activeFilters.dropoff"/>
-    <start-date/>
-    <end-date/>
+    <start-date :today="today" :start="start" :end="end"/>
+    <end-date :today="today" :start="start"/>
     <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
     <search-button @click.native.prevent="goToList"/>
@@ -36,7 +36,19 @@ export default {
     }
   },
   computed: {
-    ...mapState(['activeFilters'])
+    ...mapState(['activeFilters']),
+    today () {
+      let today = new Date()
+      today.setDate(today.getDate() - 1)
+      console.log(today)
+      return today
+    },
+    start () {
+      return new Date(this.activeFilters.startDate)
+    },
+    end () {
+      return new Date(this.activeFilters.endDate)
+    }
   },
   methods: {
     goToList () {
