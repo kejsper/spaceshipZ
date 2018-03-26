@@ -4,7 +4,7 @@
     <drop-off/>
     <start-date/>
     <end-date/>
-    <button @click.prevent="expandAdvanced = !expandAdvanced">Advanced filters</button>
+    <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced"/>
     <search-button @click.native.prevent="goToList"/>
   </form>
@@ -79,8 +79,22 @@ export default {
 @import '../../assets/scss/mixins';
 
 .filters {
-  @include flex (column, start, start);
+  @include flex (column, flex-start, flex-start);
   width: 100%;
+
+  &__button {
+    align-self: center;
+    margin: 1em 0;
+    background-color: transparent;
+    color: $color-violet;
+    font-weight: 500;
+    font-size: 0.75em;
+    border: none;
+    outline: none;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 </style>

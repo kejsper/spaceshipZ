@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="advanced-filters">
     <price-range/>
     <capacity/>
     <spaceship-type/>
@@ -27,4 +27,9 @@ export default {
 <style lang="scss" scoped>
 @import '../../../assets/scss/variables';
 @import '../../../assets/scss/mixins';
+
+.advanced-filters {
+  @include flex(column, flex-start, flex-start);
+  width: 100%;
+}
 </style>
