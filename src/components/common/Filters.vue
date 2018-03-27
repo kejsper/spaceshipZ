@@ -38,9 +38,8 @@ export default {
   computed: {
     ...mapState(['activeFilters']),
     today () {
-      let today = new Date()
-      today.setDate(today.getDate() - 1)
-      console.log(today)
+      const today = new Date()
+      // today.setDate(today.getDate() - 1)
       return today
     },
     start () {

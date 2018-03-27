@@ -1,6 +1,5 @@
 <template>
   <div class="start-date">
-    {{end}}
     <label class="start-date__label">Pick-up date</label>
     <datepicker placeholder="Pick up date" v-model="startPicked" :disabled="disabled" @input="setStartDate()"></datepicker>
   </div>
@@ -33,10 +32,10 @@ export default {
       this.setStartRentalDate(date)
     }
   },
-  updated () {
-    console.log('teraz')
-    this.disabled.from = this.end
-    this.startPicked = this.start
+  watch: {
+    'end': function () {
+      this.disabled.from = this.end
+    }
   }
 }
 </script>
