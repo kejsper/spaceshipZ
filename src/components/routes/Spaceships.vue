@@ -1,23 +1,31 @@
 <template>
   <section class="spaceship">
     <spaceship :spaceship="selectedSpaceship"/>
-    <additional-info/>
+    <additional-info v-if="isFiltered"/>
+    <set-filters v-else/>
   </section>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import Spaceship from '../common/spaceship/Spaceship.vue'
 import AdditionalInfo from '../common/spaceship/AdditionalInfo.vue'
+import SetFilters from '../common/spaceship/SetFilters.vue'
 
 export default {
   name: 'Spaceships',
   components: {
     Spaceship,
-    AdditionalInfo
+    AdditionalInfo,
+    SetFilters
   },
   computed: {
-    ...mapGetters(['selectedSpaceship'])
+    ...mapGetters(['selectedSpaceship']),
+    ...mapState(['activeFilters']),
+    isFiltered () {
+      const { startDate, endDate, pickup } = this.activeFilters
+      return startDate && endDate && pickup
+    }
   },
   methods: {
     ...mapActions(['setSingleSpaceship']),

@@ -25,7 +25,6 @@ export default {
     }
   },
   updated () {
-    console.log('tutaj')
     this.pickupSelect = this.pickup
   }
 }
