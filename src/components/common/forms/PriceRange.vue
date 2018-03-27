@@ -22,7 +22,7 @@ export default {
         max: 500,
         interval: 100,
         tooltip: 'always',
-        height: 3,
+        height: 2,
         dotSize: 12,
         processStyle: {
           'backgroundColor': '#E23694'
@@ -48,7 +48,7 @@ export default {
 .slider {
   display: block;
   width: 100%;
-  margin: 1.75em 0 1em 0;
+  margin: 0.75em 0 1em 0;
 
   &__label {
     @include flex(column, flex-start, flex-start);
