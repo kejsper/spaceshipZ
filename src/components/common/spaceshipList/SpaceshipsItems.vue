@@ -1,6 +1,6 @@
 <template>
   <ul class="spaceship-list">
-    <spaceships-item v-for="(spaceship, key) in availableSpaceships" :key="key" :spaceship="spaceship"/>
+    <spaceships-item v-for="(spaceship, key) in availableSpaceships" :key="key" :spaceship="spaceship" :activeFilters="activeFilters"/>
   </ul>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   components: {
     SpaceshipsItem
   },
-  props: ['availableSpaceships']
+  props: ['availableSpaceships', 'activeFilters']
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <section class="spaceships">
     <h2 class="spaceships__title">Search results ({{availableSpaceships.length}})</h2>
-    <spaceships-items :availableSpaceships="availableSpaceships"/>
+    <spaceships-items :availableSpaceships="availableSpaceships" :activeFilters="activeFilters"/>
   </section>
 </template>
 
