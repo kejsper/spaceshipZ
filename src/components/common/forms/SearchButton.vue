@@ -23,6 +23,7 @@ export default {
   color: $color-white;
   font-weight: 500;
   align-self: center;
+  cursor: pointer;
   &:focus {
     outline: none;
     border: none;

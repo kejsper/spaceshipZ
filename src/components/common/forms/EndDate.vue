@@ -1,7 +1,7 @@
 <template>
   <div class="end-date">
-    <label class="end-date__label">Drop-off date</label>
-    <datepicker placeholder="Drop off date" :disabled="disabled" v-model="endPicked" @input="setEndDate()"></datepicker>
+    <label class="end-date__label">Drop-off date *</label>
+    <datepicker :disabled="disabled" v-model="endPicked" @input="setEndDate()"></datepicker>
   </div>
 </template>
 

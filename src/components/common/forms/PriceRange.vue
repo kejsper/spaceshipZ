@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <label class="slider__label">Capacity</label>
+    <label class="slider__label">Price range</label>
     <vue-slider v-model="value" v-bind="options" @drag-end="showValue"></vue-slider>
   </div>
 </template>

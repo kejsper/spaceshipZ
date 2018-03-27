@@ -6,6 +6,7 @@
     <end-date :today="today" :start="start"/>
     <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
+    <span class="filters__alert" v-if="isValidated">Please fill all necessary fields.</span>
     <search-button @click.native.prevent="goToList"/>
   </form>
 </template>
@@ -32,7 +33,8 @@ export default {
   },
   data () {
     return {
-      expandAdvanced: false
+      expandAdvanced: false,
+      isValidated: false
     }
   },
   computed: {
@@ -51,11 +53,14 @@ export default {
   },
   methods: {
     goToList () {
+      const { pickup, startDate, endDate } = this.activeFilters
       // dumb form validation
-      if (!this.activeFilters.pickup || !this.activeFilters.startDate || !this.activeFilters.endDate) return
+      if (!pickup || !startDate || !endDate) {
+        this.isValidated = true
+        return
+      }
       // creating link to push
-      const link = {}
-      link.path = 'spaceships'
+      const link = { path: 'spaceships' }
       const query = {
         pickup: this.activeFilters.pickup,
         dropoff: this.activeFilters.dropoff,
@@ -94,6 +99,12 @@ export default {
   width: 100%;
   max-width: 550px;
 
+  &__alert {
+    align-self: center;
+    color: $color-red;
+    font-size: 0.75em;
+    margin: 0.5em 0;
+  }
   &__button {
     align-self: center;
     margin: 1em 0;

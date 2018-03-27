@@ -105,6 +105,7 @@ export default {
     font-weight: 500;
     padding: 0.25em 1em;
     border: none;
+    cursor: pointer;
     &:focus {
       outline: none;
       border: none;

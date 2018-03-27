@@ -1,5 +1,5 @@
 <template>
-  <label class="form__label">Picking up from
+  <label class="form__label">Picking up from *
     <select class="form__select" name="pickUp" v-model="pickupSelect" @change="setPickupSelect">
       <option value="Wrocław">Wrocław</option>
       <option value="Mars">Mars</option>
