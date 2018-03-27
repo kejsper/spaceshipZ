@@ -43,6 +43,7 @@ export default {
     },
     totalOrderCost () {
       if (this.extras && this.extras.length >= 1) {
+        // adding cost of all the added extras to totals
         const extrasPrices = this.extras.map(extra => extra.price).reduce((previous, current) => previous + current)
         return this.totalPrice + extrasPrices
       } else {
