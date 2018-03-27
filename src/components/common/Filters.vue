@@ -1,11 +1,12 @@
 <template>
   <form class="filters">
-    <pick-up/>
-    <drop-off/>
-    <start-date/>
-    <end-date/>
+    <pick-up :pickup="activeFilters.pickup"/>
+    <drop-off :dropoff="activeFilters.dropoff"/>
+    <start-date :today="today" :start="start" :end="end"/>
+    <end-date :today="today" :start="start"/>
     <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
-    <advanced-filters v-if="expandAdvanced"/>
+    <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
+    <span class="filters__alert" v-if="isValidated">Please fill all the necessary fields.</span>
     <search-button @click.native.prevent="goToList"/>
   </form>
 </template>
@@ -32,41 +33,34 @@ export default {
   },
   data () {
     return {
-      expandAdvanced: false
+      expandAdvanced: false,
+      isValidated: false
     }
   },
   computed: {
-    ...mapState(['activeFilters'])
+    ...mapState(['activeFilters']),
+    today () {
+      const today = new Date()
+      // today.setDate(today.getDate() - 1)
+      return today
+    },
+    start () {
+      return new Date(this.activeFilters.startDate)
+    },
+    end () {
+      return new Date(this.activeFilters.endDate)
+    }
   },
   methods: {
     goToList () {
+      const { pickup, startDate, endDate } = this.activeFilters
       // dumb form validation
-      if (!this.activeFilters.pickup || !this.activeFilters.startDate || !this.activeFilters.endDate) return
+      if (!pickup || !startDate || !endDate) {
+        this.isValidated = true
+        return
+      }
       // creating link to push
-      const link = {}
-      link.path = 'spaceships'
-      const query = {
-        pickup: this.activeFilters.pickup,
-        dropoff: this.activeFilters.dropoff,
-        startDate: this.activeFilters.startDate,
-        endDate: this.activeFilters.endDate
-      }
-      // checking if additional filters were set
-      if (this.activeFilters.rentalCompany) {
-        query.rentalCompany = this.activeFilters.rentalCompany
-      }
-      if (this.activeFilters.type) {
-        query.type = this.activeFilters.type
-      }
-      if (this.activeFilters.capacity && this.activeFilters.capacity.min && this.activeFilters.capacity.max) {
-        query.capacityMin = this.activeFilters.capacity.min
-        query.capacityMax = this.activeFilters.capacity.max
-      }
-      if (this.activeFilters.priceRange && this.activeFilters.priceRange.min && this.activeFilters.priceRange.max) {
-        query.priceRangeMin = this.activeFilters.priceRange.min
-        query.priceRangeMax = this.activeFilters.priceRange.max
-      }
-      link.query = query
+      const link = { path: 'spaceships' }
       // pushing full route
       this.$router.push(link)
     }
@@ -83,6 +77,12 @@ export default {
   width: 100%;
   max-width: 550px;
 
+  &__alert {
+    align-self: center;
+    color: $color-red;
+    font-size: 0.75em;
+    margin: 0.5em 0;
+  }
   &__button {
     align-self: center;
     margin: 1em 0;

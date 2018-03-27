@@ -2,8 +2,8 @@
   <div class="advanced-filters">
     <price-range/>
     <capacity/>
-    <spaceship-type/>
-    <rental-company/>
+    <spaceship-type :activeType="activeFilters.type"/>
+    <rental-company :company="activeFilters.rentalCompany"/>
   </div>
 </template>
 
@@ -15,6 +15,7 @@ import RentalCompany from './RentalCompany'
 
 export default {
   name: 'AdvancedFilters',
+  props: ['activeFilters'],
   components: {
     PriceRange,
     Capacity,

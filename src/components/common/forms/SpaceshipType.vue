@@ -13,9 +13,10 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'SpaceshipType',
+  props: ['activeType'],
   data () {
     return {
-      type: null
+      type: this.activeType || null
     }
   },
   methods: {

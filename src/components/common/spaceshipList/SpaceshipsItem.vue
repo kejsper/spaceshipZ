@@ -17,7 +17,7 @@
       <div class="spaceship__summary">
         <div class="spapceship__prices">
           <p class="spaceship__price">{{ spaceship.price }} per day</p>
-          <p class="spaceship__total">{{ totalPrice }} total</p>
+          <p class="spaceship__total" v-if="totalPrice">{{ totalPrice }} total</p>
         </div>
         <button class="spaceship__button" @click.prevent="goToSingleSpaceship(spaceship.id)">More</button>
       </div>
@@ -28,12 +28,27 @@
 <script>
 export default {
   name: 'SpaceshipsItem',
-  props: ['spaceship'],
+  props: ['spaceship', 'activeFilters'],
   computed: {
     fromDate () {
       const data = new Date(this.spaceship.available.from)
-      console.log(data)
       return data
+    },
+    totalPrice () {
+      const { startDate, endDate } = this.activeFilters
+      if (startDate && endDate) {
+        // switching dates to ms
+        const start = new Date(startDate).getTime()
+        const end = new Date(endDate).getTime()
+        // getting value of 1 day in ms
+        const oneDay = 1000 * 60 * 60 * 24
+        // counting difference in ms between days
+        const difference = Math.abs(start - end)
+        // returning number of days * spaceship price per day
+        return Math.ceil(difference / oneDay) * ~~this.spaceship.price
+      } else {
+        return false
+      }
     }
   },
   methods: {
@@ -105,6 +120,7 @@ export default {
     font-weight: 500;
     padding: 0.25em 1em;
     border: none;
+    cursor: pointer;
     &:focus {
       outline: none;
       border: none;

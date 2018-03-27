@@ -1,8 +1,8 @@
 <template>
-  <header class="top">
+  <router-link to="/" class="top">
     <span class="icon__logo top__logo"></span>
     <h1 class="top__title">Spaceship Z</h1>
-  </header>
+  </router-link>
 </template>
 
 <script>
@@ -20,6 +20,7 @@ export default {
   font-size: 14px;
   padding-top: 10px;
   margin-bottom: 30px;
+  text-decoration: none;
 
   &__logo {
     @include flex(row, center, center);

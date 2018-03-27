@@ -1,7 +1,7 @@
 <template>
   <div class="end-date">
-    <label class="end-date__label">Drop-off date</label>
-    <datepicker placeholder="Drop off date" v-model="endPicked" @input="setEndDate()"></datepicker>
+    <label class="end-date__label">Drop-off date *</label>
+    <datepicker :disabled="disabled" v-model="endPicked" @input="setEndDate()"></datepicker>
   </div>
 </template>
 
@@ -12,9 +12,13 @@ import Datepicker from 'vuejs-datepicker'
 
 export default {
   name: 'PickUp',
+  props: ['today', 'start'],
   data () {
     return {
-      endPicked: null
+      endPicked: null,
+      disabled: {
+        to: this.today
+      }
     }
   },
   components: {
@@ -25,6 +29,11 @@ export default {
     setEndDate () {
       const date = dateFormat(this.endPicked, 'yyyy-mm-dd')
       this.setEndRentalDate(date)
+    }
+  },
+  watch: {
+    'start': function () {
+      this.disabled.to = this.start
     }
   }
 }
