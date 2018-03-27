@@ -7,7 +7,7 @@
           <td>{{ spaceship.name }}</td>
           <td>{{ totalPrice }}</td>
         </tr>
-        <tr v-for="(extra, key) in extras" :key="key">
+        <tr v-if="extras" v-for="(extra, key) in extras" :key="key">
           <td>{{ extra.name }}</td>
           <td>{{ extra.price }}</td>
         </tr>
@@ -42,8 +42,12 @@ export default {
       }
     },
     totalOrderCost () {
-      const extrasPrices = this.extras.map(extra => extra.price).reduce((previous, current) => previous + current)
-      return this.totalPrice + extrasPrices
+      if (this.extras && this.extras.length >= 1) {
+        const extrasPrices = this.extras.map(extra => extra.price).reduce((previous, current) => previous + current)
+        return this.totalPrice + extrasPrices
+      } else {
+        return this.totalPrice
+      }
     }
   }
 }

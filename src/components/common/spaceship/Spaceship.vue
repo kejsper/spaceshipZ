@@ -1,6 +1,6 @@
 <template>
   <section class="single-spaceship">
-    <img :src="'../' + spaceship.pictures[0].link" :alt="spaceship.pictures[0].description" class="single-spaceship__image">
+    <img :src="photo" :alt="photoDescription" class="single-spaceship__image">
     <h2 class="single-spaceship__title">{{ spaceship.name }}</h2>
     <h3 class="single-spaceship__detail">Capacity: {{spaceship.capacity}}</h3>
     <h3 class="single-spaceship__detail">Type: {{spaceship.type}}</h3>
@@ -12,7 +12,19 @@
 <script>
 export default {
   name: 'Spaceship',
-  props: ['spaceship']
+  props: ['spaceship'],
+  computed: {
+    photo () {
+      if (this.spaceship.pictures && this.spaceship.pictures[0]) {
+        return '../' + this.spaceship.pictures[0].link
+      }
+    },
+    photoDescription () {
+      if (this.spaceship.pictures && this.spaceship.pictures[0]) {
+        return this.spaceship.pictures[0].description
+      }
+    }
+  }
 }
 </script>
 

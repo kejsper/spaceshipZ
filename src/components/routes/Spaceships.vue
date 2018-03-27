@@ -41,7 +41,6 @@ export default {
   },
   mounted () {
     this.setSpaceship(this.$route.params.id)
-    this.setExtras(this.activeFilters.pickedFeatures)
   },
   watch: {
     'activeFilters.pickedFeatures' () {
