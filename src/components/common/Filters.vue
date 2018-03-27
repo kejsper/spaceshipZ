@@ -61,28 +61,6 @@ export default {
       }
       // creating link to push
       const link = { path: 'spaceships' }
-      // const query = {
-      //   pickup: this.activeFilters.pickup,
-      //   dropoff: this.activeFilters.dropoff,
-      //   startDate: this.activeFilters.startDate,
-      //   endDate: this.activeFilters.endDate
-      // }
-      // // checking if additional filters were set
-      // if (this.activeFilters.rentalCompany) {
-      //   query.rentalCompany = this.activeFilters.rentalCompany
-      // }
-      // if (this.activeFilters.type) {
-      //   query.type = this.activeFilters.type
-      // }
-      // if (this.activeFilters.capacity && this.activeFilters.capacity.min && this.activeFilters.capacity.max) {
-      //   query.capacityMin = this.activeFilters.capacity.min
-      //   query.capacityMax = this.activeFilters.capacity.max
-      // }
-      // if (this.activeFilters.priceRange && this.activeFilters.priceRange.min && this.activeFilters.priceRange.max) {
-      //   query.priceRangeMin = this.activeFilters.priceRange.min
-      //   query.priceRangeMax = this.activeFilters.priceRange.max
-      // }
-      // link.query = query
       // pushing full route
       this.$router.push(link)
     }
