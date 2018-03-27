@@ -8,50 +8,51 @@ const state = {
 }
 
 const actions = {
-  setAvailableSpaceships ({commit, rootState}, query) {
-    const spaceships = rootState.spaceships
-    commit(types.AVAILABLE_SPACESHIPS, {spaceships, query})
+  setAvailableSpaceships ({commit}, activeFilters) {
+    const spaceships = state.all
+    commit(types.AVAILABLE_SPACESHIPS, {spaceships, activeFilters})
   },
-  setSingleSpaceship ({commit, rootState}, id) {
-    const spaceships = rootState.spaceships
+  setSingleSpaceship ({commit}, id) {
+    const spaceships = state.all
     commit(types.SINGLE_SPACESHIP, {spaceships, id})
   }
 }
 
 const mutations = {
-  [types.AVAILABLE_SPACESHIPS] (state, {spaceships, query}) {
-    let results = []
+  [types.AVAILABLE_SPACESHIPS] (state, {spaceships, activeFilters}) {
+    let results = spaceships
+    const query = activeFilters
     // simple validation - return no results if basic filters are not set
-    if (!query.pickup || !query.startDate || !query.endDate) {
-      return results
+    if (!query || !query.pickup || !query.startDate || !query.endDate) {
+      state.spaceships = results
+      return
     }
     // filtering through possible queries
-    results = spaceships
-    if (query && query.pickup) {
+    if (query.pickup) {
       const filtering = results.filter(spaceship => {
         return spaceship.available.airport === query.pickup
       })
       results = filtering
     }
-    if (query && query.type) {
+    if (query.type) {
       const filtering = results.filter(spaceship => {
         return spaceship.type === query.type
       })
       results = filtering
     }
-    if (query && query.rentalCompany) {
+    if (query.rentalCompany) {
       const filtering = results.filter(spaceship => {
         return spaceship.company === query.rentalCompany
       })
       results = filtering
     }
-    if (query && query.capacityMin && query.capacityMax) {
+    if (query.capacityMin && query.capacityMax) {
       const filtering = results.filter(spaceship => {
         return spaceship.capacity >= query.capacityMin && spaceship.capacity <= query.capacityMax
       })
       results = filtering
     }
-    if (query && query.priceRangeMin && query.priceRangeMax) {
+    if (query.priceRangeMin && query.priceRangeMax) {
       const filtering = results.filter(spaceship => {
         return spaceship.price >= query.priceRangeMin && spaceship.price <= query.priceRangeMax
       })

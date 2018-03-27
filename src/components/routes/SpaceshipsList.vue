@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 import SpaceshipsItems from '../common/spaceshipList/SpaceshipsItems'
 
 export default {
@@ -15,13 +15,14 @@ export default {
     SpaceshipsItems
   },
   computed: {
-    ...mapGetters(['availableSpaceships'])
+    ...mapGetters(['availableSpaceships']),
+    ...mapState(['activeFilters'])
   },
   methods: {
     ...mapActions(['setAvailableSpaceships'])
   },
   mounted () {
-    this.setAvailableSpaceships(this.$route.query)
+    this.setAvailableSpaceships(this.activeFilters)
   }
 }
 </script>
