@@ -8,7 +8,8 @@ const state = {
   rentalCompany: '',
   type: '',
   priceRange: {},
-  capacity: {}
+  capacity: {},
+  pickedFeatures: []
 }
 
 const actions = {
@@ -35,6 +36,9 @@ const actions = {
   },
   setCapacity ({commit}, capacity) {
     commit(types.CAPACITY, capacity)
+  },
+  setPickedFeatures ({commit}, id) {
+    commit(types.PICKED_FEATURES, id)
   }
 }
 
@@ -64,6 +68,16 @@ const mutations = {
   [types.CAPACITY] (state, capacity) {
     state.capacity.min = capacity[0]
     state.capacity.max = capacity[1]
+  },
+  [types.PICKED_FEATURES] (state, id) {
+    const features = state.pickedFeatures
+    const index = features.indexOf(id)
+    if (index !== -1) {
+      features.splice(index, 1)
+    } else {
+      features.push(id)
+    }
+    state.pickedFeatures = features
   }
 }
 

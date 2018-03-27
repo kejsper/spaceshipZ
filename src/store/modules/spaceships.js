@@ -58,6 +58,16 @@ const mutations = {
       })
       results = filtering
     }
+    if (query.startDate && query.endDate) {
+      const filtering = results.filter(spaceship => {
+        const start = new Date(query.startDate).getTime()
+        const end = new Date(query.endDate).getTime()
+        const from = new Date(spaceship.available.from).getTime()
+        const to = new Date(spaceship.available.to).getTime()
+        return start > from && start < to && end > from && end < to
+      })
+      results = filtering
+    }
     state.spaceships = results
   },
   [types.SINGLE_SPACESHIP] (state, {spaceships, id}) {

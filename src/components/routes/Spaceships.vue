@@ -1,7 +1,8 @@
 <template>
   <section class="spaceship">
     <spaceship :spaceship="selectedSpaceship"/>
-    <additional-info v-if="isFiltered"/>
+    <additional-info v-if="isFiltered" :activeFilters="activeFilters" :additionalFeatures="extras.all"/>
+    <Summary v-if="isFiltered" :activeFilters="activeFilters" :extras="extras.selected" :spaceship="selectedSpaceship"/>
     <set-filters v-else/>
   </section>
 </template>
@@ -11,30 +12,41 @@ import { mapActions, mapGetters, mapState } from 'vuex'
 import Spaceship from '../common/spaceship/Spaceship.vue'
 import AdditionalInfo from '../common/spaceship/AdditionalInfo.vue'
 import SetFilters from '../common/spaceship/SetFilters.vue'
+import Summary from '../common/spaceship/Summary.vue'
 
 export default {
   name: 'Spaceships',
   components: {
     Spaceship,
     AdditionalInfo,
-    SetFilters
+    SetFilters,
+    Summary
   },
   computed: {
     ...mapGetters(['selectedSpaceship']),
-    ...mapState(['activeFilters']),
+    ...mapState(['activeFilters', 'extras']),
     isFiltered () {
       const { startDate, endDate, pickup } = this.activeFilters
       return startDate && endDate && pickup
     }
   },
   methods: {
-    ...mapActions(['setSingleSpaceship']),
+    ...mapActions(['setSingleSpaceship', 'setSelectedExtras']),
     setSpaceship (id) {
       this.setSingleSpaceship(~~id)
+    },
+    setExtras (picked) {
+      this.setSelectedExtras(picked)
     }
   },
   mounted () {
     this.setSpaceship(this.$route.params.id)
+    this.setExtras(this.activeFilters.pickedFeatures)
+  },
+  watch: {
+    'activeFilters.pickedFeatures' () {
+      this.setExtras(this.activeFilters.pickedFeatures)
+    }
   }
 }
 </script>
