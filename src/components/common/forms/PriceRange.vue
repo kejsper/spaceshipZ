@@ -11,12 +11,13 @@ import vueSlider from 'vue-slider-component'
 
 export default {
   name: 'PriceRange',
+  props: ['priceRangeMin', 'priceRangeMax'],
   components: {
     vueSlider
   },
   data () {
     return {
-      value: [300, 500],
+      value: [this.priceRangeMin, this.priceRangeMax],
       options: {
         min: 300,
         max: 500,

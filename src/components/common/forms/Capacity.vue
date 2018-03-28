@@ -11,12 +11,13 @@ import vueSlider from 'vue-slider-component'
 
 export default {
   name: 'Capacity',
+  props: ['capacityMin', 'capacityMax'],
   components: {
     vueSlider
   },
   data () {
     return {
-      value: [1, 4],
+      value: [this.capacityMin, this.capacityMax],
       options: {
         min: 1,
         max: 4,
