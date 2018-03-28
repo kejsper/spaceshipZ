@@ -45,6 +45,8 @@ SCSS with sass-loader
 ```
 
 ## Outside libraries
-FontAwesome - imported in index.html file from cdn.
-Vuejs-datepicker - date picking options
-vue-slider-component - for range slides.
+> FontAwesome - imported in index.html file from cdn.
+
+> Vuejs-datepicker - date picking options
+
+> vue-slider-component - for range slides.
