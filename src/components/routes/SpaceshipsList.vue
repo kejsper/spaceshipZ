@@ -44,6 +44,18 @@ export default {
     },
     'activeFilters.priceRangeMax' () {
       this.setAvailableSpaceships(this.activeFilters)
+    },
+    'activeFilters.pickup' () {
+      this.setAvailableSpaceships(this.activeFilters)
+    },
+    'activeFilters.dropoff' () {
+      this.setAvailableSpaceships(this.activeFilters)
+    },
+    'activeFilters.startDate' () {
+      this.setAvailableSpaceships(this.activeFilters)
+    },
+    'activeFilters.endDate' () {
+      this.setAvailableSpaceships(this.activeFilters)
     }
   }
 }
@@ -57,6 +69,7 @@ export default {
   @include flex(column, flex-start, flex-start);
   width: 100%;
   max-width: 650px;
+  align-self: center;
 
 }
 

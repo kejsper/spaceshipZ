@@ -1,23 +1,23 @@
 <template>
-  <div classs="spaceships__wrapper">
+  <div class="spaceships__wrapper">
     <h2 class="spaceships__title">Search criteria</h2>
     <p>
       Flying from {{ activeFilters.pickup }} ({{ activeFilters.startDate }}).
       Flying to {{ activeFilters.dropoff }} ({{activeFilters.endDate}}).
     </p>
-    <button @click.prevent="expandAdvanced = !expandAdvanced" class="spaceships__button">Advanced filters</button>
-    <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
+    <button @click.prevent="expandAdvanced = !expandAdvanced" class="spaceships__button">Show filters</button>
+    <filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
   </div>
 </template>
 
 <script>
-import AdvancedFilters from '../forms/AdvancedFilters'
+import Filters from '../Filters'
 
 export default {
   name: 'SearchCriteria',
   props: ['activeFilters'],
   components: {
-    AdvancedFilters
+    Filters
   },
   data () {
     return {
@@ -31,19 +31,13 @@ export default {
 @import '../../../assets/scss/variables';
 @import '../../../assets/scss/mixins';
 .spaceships {
-  @include flex(column, center, center);
-  width: 100%;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
   &__title {
     font-family: $font-normal;
     font-size: 1.1em;
     color: $color-violet;
     font-weight: bold;
   }
-  &__wrapper{
+  &__wrapper {
     @include flex(column, flex-start, flex-start);
     width: 100%;
   }
