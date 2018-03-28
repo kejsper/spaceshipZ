@@ -15,7 +15,7 @@ export default {
   props: ['today', 'start', 'end'],
   data () {
     return {
-      startPicked: null,
+      startPicked: this.start,
       disabled: {
         to: this.today,
         from: this.end || null

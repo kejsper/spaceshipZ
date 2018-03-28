@@ -1,15 +1,6 @@
 <template>
   <section class="spaceships">
-    <div classs="spaceships__wrapper" v-if="activeFilters.pickup && activeFilters.startDate && activeFilters.dropoff && activeFilters.endDate">
-      <h2 class="spaceships__title">Search criteria</h2>
-      <p>
-        Flying from {{ activeFilters.pickup }} ({{ activeFilters.startDate }}).
-        Flying to {{ activeFilters.dropoff }} ({{activeFilters.endDate}}).
-      </p>
-      <button @click.prevent="expandAdvanced = !expandAdvanced" class="spaceships__button">Advanced filters</button>
-      <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
-    </div>
-    <h2 class="spaceships__title">Search results ({{availableSpaceships.length}})</h2>
+    <search-criteria :activeFilters="activeFilters" v-if="activeFilters.pickup && activeFilters.startDate && activeFilters.dropoff && activeFilters.endDate"/>
     <spaceships-items :availableSpaceships="availableSpaceships" :activeFilters="activeFilters"/>
   </section>
 </template>
@@ -17,18 +8,13 @@
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex'
 import SpaceshipsItems from '../common/spaceshipList/SpaceshipsItems'
-import AdvancedFilters from '../common/forms/AdvancedFilters'
+import SearchCriteria from '../common/spaceshipList/SearchCriteria'
 
 export default {
   name: 'SpaceshipsList',
   components: {
     SpaceshipsItems,
-    AdvancedFilters
-  },
-  data () {
-    return {
-      expandAdvanced: false
-    }
+    SearchCriteria
   },
   computed: {
     ...mapGetters(['availableSpaceships']),
@@ -68,28 +54,10 @@ export default {
 @import '../../assets/scss/mixins';
 
 .spaceships {
-  &__title {
-    font-family: $font-normal;
-    font-size: 1.1em;
-    color: $color-violet;
-    font-weight: bold;
-  }
-  &__wrapper{
-    @include flex(column, flex-start, flex-start);
-  }
-  &__button {
-    align-self: center;
-    margin: 1em 0;
-    background-color: transparent;
-    color: $color-violet;
-    font-weight: 500;
-    font-size: 0.75em;
-    border: none;
-    outline: none;
-    &:focus {
-      outline: none;
-    }
-  }
+  @include flex(column, flex-start, flex-start);
+  width: 100%;
+  max-width: 650px;
+
 }
 
 </style>

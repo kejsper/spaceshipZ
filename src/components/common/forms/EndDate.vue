@@ -12,10 +12,10 @@ import Datepicker from 'vuejs-datepicker'
 
 export default {
   name: 'PickUp',
-  props: ['today', 'start'],
+  props: ['today', 'start', 'end'],
   data () {
     return {
-      endPicked: null,
+      endPicked: this.end,
       disabled: {
         to: this.today
       }
