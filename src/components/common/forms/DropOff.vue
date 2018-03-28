@@ -1,5 +1,5 @@
 <template>
-  <label class="form__label">Dropping off at
+  <label class="form__label">Dropping off at *
     <select class="form__select" name="dropOff" v-model="dropoffSelect" @change="setDropoffSelect">
       <option value="Wrocław">Wrocław</option>
       <option value="Mars">Mars</option>

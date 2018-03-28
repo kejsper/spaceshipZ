@@ -61,9 +61,9 @@ export default {
   },
   methods: {
     goToList () {
-      const { pickup, startDate, endDate } = this.activeFilters
+      const { pickup, dropoff, startDate, endDate } = this.activeFilters
       // dumb form validation
-      if (!pickup || !startDate || !endDate) {
+      if (!pickup || !dropoff || !startDate || !endDate) {
         this.isValidated = true
         return
       }
