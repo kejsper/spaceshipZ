@@ -3,7 +3,7 @@
     <pick-up :pickup="activeFilters.pickup"/>
     <drop-off :dropoff="activeFilters.dropoff"/>
     <start-date :today="today" :start="start" :end="end"/>
-    <end-date :today="today" :start="start"/>
+    <end-date :today="today" :start="start" :end="end"/>
     <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
     <span class="filters__alert" v-if="isValidated">Please fill all the necessary fields.</span>
@@ -45,10 +45,18 @@ export default {
       return today
     },
     start () {
-      return new Date(this.activeFilters.startDate)
+      if (this.activeFilters.startDate) {
+        return new Date(this.activeFilters.startDate)
+      } else {
+        return null
+      }
     },
     end () {
-      return new Date(this.activeFilters.endDate)
+      if (this.activeFilters.endDate) {
+        return new Date(this.activeFilters.endDate)
+      } else {
+        return null
+      }
     }
   },
   methods: {
