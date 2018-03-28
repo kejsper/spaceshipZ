@@ -26,6 +26,7 @@ export default {
   @include flex(column, flex-start, flex-start);
   width: 100%;
   max-width: 650px;
+  align-self: center;
 
   &__title {
     font-family: $font-normal;

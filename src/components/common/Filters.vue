@@ -7,7 +7,7 @@
     <button @click.prevent="expandAdvanced = !expandAdvanced" class="filters__button">Advanced filters</button>
     <advanced-filters v-if="expandAdvanced" :activeFilters="activeFilters"/>
     <span class="filters__alert" v-if="isValidated">Please fill all the necessary fields.</span>
-    <search-button @click.native.prevent="goToList"/>
+    <search-button @click.native.prevent="goToList" v-if="$route.path === '/'"/>
   </form>
 </template>
 
