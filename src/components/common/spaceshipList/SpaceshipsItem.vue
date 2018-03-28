@@ -16,7 +16,7 @@
       <p class="spaceship__description"> {{ spaceship.shortDescription }}</p>
       <div class="spaceship__summary">
         <div class="spapceship__prices">
-          <p class="spaceship__price">{{ spaceship.price }} per day</p>
+          <p class="spaceship__price">{{ spaceship.price }}/day</p>
           <p class="spaceship__total" v-if="totalPrice">{{ totalPrice }} total</p>
         </div>
         <button class="spaceship__button" @click.prevent="goToSingleSpaceship(spaceship.id)">More</button>

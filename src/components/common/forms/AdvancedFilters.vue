@@ -1,7 +1,7 @@
 <template>
   <div class="advanced-filters">
-    <price-range/>
-    <capacity/>
+    <price-range :priceRangeMin="activeFilters.priceRangeMin" :priceRangeMax="activeFilters.priceRangeMax"/>
+    <capacity :capacityMin="activeFilters.capacityMin" :capacityMax="activeFilters.capacityMax"/>
     <spaceship-type :activeType="activeFilters.type"/>
     <rental-company :company="activeFilters.rentalCompany"/>
   </div>

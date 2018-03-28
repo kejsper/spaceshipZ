@@ -7,8 +7,10 @@ const state = {
   dropoff: '',
   rentalCompany: '',
   type: '',
-  priceRange: {},
-  capacity: {},
+  priceRangeMin: 300,
+  priceRangeMax: 500,
+  capacityMin: 1,
+  capacityMax: 4,
   pickedFeatures: []
 }
 
@@ -62,12 +64,12 @@ const mutations = {
     state.type = type
   },
   [types.PRICE_RANGE] (state, priceRange) {
-    state.priceRange.min = priceRange[0]
-    state.priceRange.max = priceRange[1]
+    state.priceRangeMin = priceRange[0]
+    state.priceRangeMax = priceRange[1]
   },
   [types.CAPACITY] (state, capacity) {
-    state.capacity.min = capacity[0]
-    state.capacity.max = capacity[1]
+    state.capacityMin = capacity[0]
+    state.capacityMax = capacity[1]
   },
   [types.PICKED_FEATURES] (state, id) {
     const features = state.pickedFeatures
